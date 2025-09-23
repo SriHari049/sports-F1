@@ -41,7 +41,7 @@ const PlayersPage = () => {
 
     const fetchPlayers = async () => {
         try {
-            const response = await axios.get(`http://localhost:9090/api/players`);
+            const response = await axios.get(`http://localhost:9090/back2/api/players`);
             setPlayers(response.data);
             setLoading(false);
         } catch (err) {
@@ -52,7 +52,7 @@ const PlayersPage = () => {
 
     const fetchTeams = async () => {
         try {
-            const response = await axios.get(`http://localhost:9090/api/teams`);
+            const response = await axios.get(`http://localhost:9090/back2/api/teams`);
             setTeams(response.data);
         } catch (err) {
             setError("Failed to fetch teams");
@@ -86,12 +86,12 @@ const PlayersPage = () => {
         try {
             if (isEditing) {
                 await axios.put(
-                    `http://localhost:9090/api/players/${currentPlayer.id}`,
+                    `http://localhost:9090/back2/api/players/${currentPlayer.id}`,
                     playerToSave
                 );
                 setSuccessMessage("Player updated successfully!");
             } else {
-                await axios.post(`http://localhost:9090/api/players`, playerToSave);
+                await axios.post(`http://localhost:9090/back2/api/players`, playerToSave);
                 setSuccessMessage("Player added successfully!");
             }
             fetchPlayers();
@@ -103,7 +103,7 @@ const PlayersPage = () => {
 
     const handleDeletePlayer = async (id) => {
         try {
-            await axios.delete(`http://localhost:9090/api/players/${id}`);
+            await axios.delete(`http://localhost:9090/back2/api/players/${id}`);
             setSuccessMessage("Player deleted successfully!");
             fetchPlayers();
         } catch (err) {
