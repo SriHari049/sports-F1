@@ -13,12 +13,12 @@ const TeamsPage = () => {
 
     useEffect(() => {
         // Fetch teams from the backend
-        axios.get("http://localhost:9090/api/teams")
+        axios.get("http://localhost:9090/back2/api/teams")
             .then((response) => setTeams(response.data))
             .catch((error) => console.error("Error fetching teams:", error));
 
         // Fetch players from the backend
-        axios.get("http://localhost:9090/api/players")
+        axios.get("http://localhost:9090/back2/api/players")
             .then((response) => setPlayers(response.data))
             .catch((error) => console.error("Error fetching players:", error));
     }, []);
@@ -52,7 +52,7 @@ const TeamsPage = () => {
         };
 
         // Save the team to the backend
-        axios.post("http://localhost:9090/api/teams", teamData)
+        axios.post("http://localhost:9090/back2/api/teams", teamData)
             .then((response) => {
                 setTeams([...teams, response.data]);
                 setNewTeam("");
@@ -63,7 +63,7 @@ const TeamsPage = () => {
 
     const deleteTeam = (id) => {
         // Delete the team from the backend
-        axios.delete(`http://localhost:9090/api/teams/${id}`)
+        axios.delete(`http://localhost:9090/back2/api/teams/${id}`)
             .then(() => {
                 setTeams(teams.filter((team) => team.id !== id));
             })
@@ -79,7 +79,7 @@ const TeamsPage = () => {
         const updatedTeam = { ...teams[editingIndex], name: editingName };
 
         // Update the team in the backend
-        axios.put(`http://localhost:9090/api/teams/${updatedTeam.id}`, updatedTeam)
+        axios.put(`http://localhost:9090/back2/api/teams/${updatedTeam.id}`, updatedTeam)
             .then((response) => {
                 const updatedTeams = [...teams];
                 updatedTeams[editingIndex] = response.data;
