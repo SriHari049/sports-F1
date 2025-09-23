@@ -24,12 +24,12 @@ function App() {
   const location = useLocation();
   const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
   const hideNavbarOnRoutes = ['/viewer', '/login'];
-  const shouldShowNavbar = token && !hideNavbarOnRoutes.includes(location.pathname);
+  const shouldShowNavbar = token && !hideNavbarOnRoutes.some((p) => location.pathname.endsWith(p));
 
   return (
     <>
       {shouldShowNavbar && <Navbar />}
-      <Routes basename="/sportsl">
+      <Routes>
         <Route path="/" element={<Navigate to="/login" />} /> 
         <Route path="/login" element={<LoginPage />} />
 
