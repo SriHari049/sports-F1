@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       {shouldShowNavbar && <Navbar />}
-      <Routes>
+      <Routes basename="/sportsl">
         <Route path="/" element={<Navigate to="/login" />} /> 
         <Route path="/login" element={<LoginPage />} />
 
