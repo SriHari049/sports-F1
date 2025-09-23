@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import "./../styles/LoginPage.css";
+import "./../styles/LoginPage.css";   
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
